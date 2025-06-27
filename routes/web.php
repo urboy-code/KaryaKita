@@ -1,17 +1,17 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePublicController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Service Routes
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,10 +20,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile/public', [ProfilePublicController::class, 'edit'])->name('profile.public.edit');
     Route::patch('/profile/public', [ProfilePublicController::class, 'update'])->name('profile.public.update');
+
+    // Service Routes
+    Route::resource('services', ServiceController::class)->except(['show']);
 });
 
-Route::middleware('auth')->group(function () {
-    Route::resource('service', ServiceController::class);
-});
+Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+
+
+
 
 require __DIR__ . '/auth.php';

@@ -5,8 +5,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white darkK:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-gray-100 dark:bg-gray-900">
                     @if (session('status'))
                         <div class="mb-4 font-medium text-sm text-green-600">
                             {{ session('status') }}
@@ -34,7 +34,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="profile_photo" :value="__('Profile Photo')" />
-                            <x-text-input name="profile_photo" id="profile_photo" type="file" />
+                            <x-text-input name="profile_photo" id="profile_photo" type="file" :value="old('profile_photo')" />
 
                             <x-input-error :messages="$errors->get('profile_photo')" class="mt-2" />
                         </div>

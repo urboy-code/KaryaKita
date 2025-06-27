@@ -42,15 +42,17 @@ class ServiceController extends Controller
 
         $request->user()->service()->create($validated);
 
-        return redirect()->route('service.index')->with('success', 'Jasa berhasil dibuat.');
+        return redirect()->route('services.index')->with('success', 'Jasa berhasil dibuat.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Service $service)
     {
-        //
+        $service->load('user.profile', 'category');
+
+        return view('services.show', compact('service'));
     }
 
     /**
@@ -81,7 +83,7 @@ class ServiceController extends Controller
         $validated = $request->validated();
         $service->update($validated);
 
-        return redirect()->route('service.index')->with('success', 'Jasa berhasil diperbarui.');
+        return redirect()->route('services.index')->with('success', 'Jasa berhasil diperbarui.');
     }
 
     /**
@@ -96,6 +98,6 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('service.index')->with('success', 'Jasa berhasil dihapus.');
+        return redirect()->route('services.index')->with('success', 'Jasa berhasil dihapus.');
     }
 }

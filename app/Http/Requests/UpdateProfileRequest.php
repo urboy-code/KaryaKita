@@ -22,8 +22,8 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'bio' => 'required|string|max:1000',
-            'city' => 'required|string|max:100',
+            'bio' => 'nullable|string|max:1000',
+            'city' => 'nullable|string|max:100',
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
