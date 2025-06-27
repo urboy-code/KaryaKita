@@ -29,21 +29,32 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Validate the request data
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'string', 'in:client,talent'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        // Jembatan penghubung: Buat profil kosong untuk role talent baru
+        if ($user->role === 'talent') {
+            $user->profile()->create([
+                'bio' => 'Selamat datang di KaryaKita!, silahkan lengkapi profil Anda agar client dapat mengenal Anda lebih baik.',
+                'city' => 'Belum diisi',
+            ]);
+        }
 
         return redirect(route('dashboard', absolute: false));
     }
