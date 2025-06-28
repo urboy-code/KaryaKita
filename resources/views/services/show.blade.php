@@ -31,9 +31,35 @@
                     </div>
 
                     <div class="mt-6">
-                        <a href=""
-                            class="ext-sm font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{{ __('Pesan Jasa Ini') }}</a>
+                        <form action="{{ route('bookings.store') }}" method="POST">
+                            @csrf
+
+                            {{-- mengirim id jasa ke form booking --}}
+                            <input type="hidden" name="service_id" value="{{ $service->id }}">
+
+                            {{-- Mengirim Tanggal Booking --}}
+                            <div class="mb-4">
+                                <x-input-label for="booking_date" :value="__('Tanggal Booking')" />
+                                <x-text-input id="booking_date" name="booking_date" type="date"
+                                    class="mt-1 block w-full" required />
+                                <x-input-error :messages="$errors->get('booking_date')" class="mt-2" />
+                            </div>
+
+                            {{-- Mengirim Catatan Client --}}
+                            <div class="mb-4">
+                                <x-input-label for="notes" :value="__('Catatan Tambahan (Opsional)')" />
+                                <textarea name="notes" id="notes" rows="1"
+                                    class="block mt-1 w-full rounded-md shadow-md  overflow-hidden focus:border-indigo-500">
+                                    {{ old('notes', '') }}
+                                </textarea>
+                            </div>
+
+                            <x-primary-button class="w-full justify-center ">
+                                {{ __('Booking Jasa Ini') }}
+                            </x-primary-button>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>

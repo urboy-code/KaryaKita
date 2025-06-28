@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePublicController;
@@ -23,6 +24,9 @@ Route::middleware('auth')->group(function () {
 
     // Service Routes
     Route::resource('services', ServiceController::class)->except(['show']);
+
+    // Route Bookings
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
 Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
