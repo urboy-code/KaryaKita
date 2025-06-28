@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePublicController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TalentDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -27,6 +28,13 @@ Route::middleware('auth')->group(function () {
 
     // Route Bookings
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+
+    // Route Dashboard Bookings Talent
+    Route::get('/talent/bookings', [TalentDashboardController::class, 'index'])->name('talent.bookings.index');
+
+    // Route Baru: Untuk mengubah status booking
+    Route::patch('/talent/bookings/{booking}/accept', [TalentDashboardController::class, 'accept'])->name('talent.bookings.accept');
+    Route::patch('/talent/bookings/{booking}/reject', [TalentDashboardController::class, 'reject'])->name('talent.bookings.reject');
 });
 
 Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
