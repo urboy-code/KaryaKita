@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <form action="{{ route('bookings.store') }}" method="POST">
+                        <form action="{{ route('client.bookings.store') }}" method="POST">
                             @csrf
 
                             {{-- mengirim id jasa ke form booking --}}

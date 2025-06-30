@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,13 @@
     <title>KaryaKita</title>
 </head>
 
-<body class="antialiased bg-white dark:bg-gray-900">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+<body class="bg-secondary-light">
+    <x-guest-layout>
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <x-homepage.hero-section />
+        </div>
+    </x-guest-layout>
+    {{-- <div class="min-h-screen">
         <!-- Page Content -->
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <h1 class="font-bold text-3xl text-gray-900 dark:text-white">Jelajahi Jasa Kreatif</h1>
@@ -40,7 +45,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>

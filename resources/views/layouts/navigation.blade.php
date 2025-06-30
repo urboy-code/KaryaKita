@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+                    <x-nav-link :href="route('talent.services.index')" :active="request()->routeIs('services.index')">
                         {{ __('Services') }}
                     </x-nav-link>
                 </div>
@@ -42,7 +42,7 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('profile.public.edit')">
+                        <x-dropdown-link :href="route('talent.profile.public.edit')">
                             {{ __('Edit Profile') }}
                         </x-dropdown-link>
 
@@ -79,7 +79,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+            <x-responsive-nav-link :href="route('talent.services.index')" :active="request()->routeIs('services.index')">
                 {{ __('Services') }}
             </x-responsive-nav-link>
         </div>
