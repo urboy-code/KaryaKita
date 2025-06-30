@@ -1,5 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="py-32 flex flex-col items-start justify-center space-y-6 h-full">
+    <div
+        class="flex flex-col items-center text-center md:text-start md:items-start justify-center space-y-10 h-full">
         <h1 class="text-4xl font-extrabold text-primary md:text-5xl leading-tight">
             Cara baru untuk <br class="hidden sm:inline"> belajar & dapatkan ilmu
         </h1>
@@ -16,7 +17,7 @@
                 Lebih
                 Lanjut</a>
         </div>
-        <div class="mt-10 grid grid-cols-3 gap-4 text-center">
+        <div class="pt-16 md:pt-0 grid grid-cols-3 gap-4 text-center">
             <div>
                 <div class="text-2xl font-bold text-primary ">1,5K+</div>
                 <div class="text-sm text-gray-600 ">Talenta Aktif</div>
@@ -31,10 +32,10 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center justify-end">
+    <div class="hidden md:flex items-center justify-end ">
         <div class="relative w-full max-w-md">
             <img src="{{ asset('images/hero-section.svg') }}" alt="Hero Image"
-                class="w-full max-w-md h-auto object-cover rounded-lg shadow-lg">
+                class="w-full max-w-md h-auto object-cover rounded-bl-[10.5rem] rounded-xl shadow-xl">
             <div class="absolute top-0 left-0 bg-secondary rounded-full w-16 h-16 -ml-8 -mt-8 opacity-50"></div>
             <div class="absolute bottom-0 right-0 bg-primary rounded-full w-20 h-20 -mr-10 -mb-10 opacity-50"></div>
         </div>

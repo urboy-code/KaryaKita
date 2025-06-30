@@ -11,8 +11,10 @@
 
 <body class="bg-secondary-light">
     <x-guest-layout>
-        <div class="max-w-7xl mx-auto px-6 md:px-8">
-            <x-homepage.hero-section />
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="min-h-screen flex justify-center items-center">
+                <x-homepage.hero-section />
+            </div>
         </div>
     </x-guest-layout>
     {{-- <div class="min-h-screen">
