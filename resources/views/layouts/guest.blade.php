@@ -16,19 +16,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-primary antialiased">
+<body class="font-sans text-primary antialiased bg-secondary-light">
     <nav x-data="{ open: false }" class="bg-secondary-light border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <div class="flex justify-between items-center h-16">
                 <div class="flex">
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('home') }}">
+                        <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                             <span class="text-2xl font-bold text-primary">KaryaKita</span>
-                        </a>
+                        </x-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.public-index')">
                             Jelajahi Jasa
                         </x-nav-link>
                     </div>

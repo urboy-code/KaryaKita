@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -21,7 +20,7 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile/public', [ProfilePublicController::class, 'update'])->name('profile.public.update');
 
         // Service Routes
-        Route::resource('services', ServiceController::class)->except(['show']);
+        Route::resource('services', ServiceController::class)->except(['index','show']);
 
         // Route Dashboard Bookings Talent
         Route::get('/talent/bookings', [TalentDashboardController::class, 'index'])->name('talent.bookings.index');
@@ -41,6 +40,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
 require __DIR__ . '/auth.php';

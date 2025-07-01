@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>KaryaKita</title>
-</head>
-
-<body class="bg-secondary-light">
-    <x-guest-layout>
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="min-h-screen flex justify-center items-center">
-                <x-clientPage.homepage />
+<x-guest-layout>
+    <div class="">
+        <div class="max-w-7xl mx-auto py-32 px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold text-primary">Jelajahi Semua Jasa</h1>
+                <p class="mt-2 text-md font-light text-gray-600">Temukan talenta yang tepat untuk proyek Anda
+                    berikutnya.</p>
             </div>
-        </div>
-    </x-guest-layout>
-    {{-- <div class="min-h-screen">
-        <!-- Page Content -->
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <h1 class="font-bold text-3xl text-gray-900 dark:text-white">Jelajahi Jasa Kreatif</h1>
-            <p class="text-center text-gray-600 dark:text-gray-400 mt-2">Temukan talenta terbaik di kota Anda.</p>
 
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach ($services as $service)
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @forelse ($services as $service)
                     <div
                         class="dark:bg-white bg-gray-800 overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-lg">
                         <div class="p-6">
@@ -44,10 +28,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
+                        <p>Oops! Belum ada jasa untuk ditawarkan.</p>
+                    </div>
+                @endforelse
             </div>
         </div>
-    </div> --}}
-</body>
-
-</html>
+    </div>
+</x-guest-layout>

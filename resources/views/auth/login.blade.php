@@ -1,6 +1,5 @@
 <x-guest-layout>
-
-    <div class="min-h-screen flex justify-center items-center mx-auto bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen flex justify-center items-center mx-auto bg-secondary-light">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 

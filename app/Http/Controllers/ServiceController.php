@@ -16,9 +16,9 @@ class ServiceController extends Controller
     public function index()
     {
         // mengambil semua jasa milik user, urutkan dari yang terbaru
-        $services = Auth::user()->service()->latest()->get();
+        $services = Service::with(['user.profile', 'category'])->latest()->get();
 
-        return view('services.index', compact('services'));
+        return view('services.public-index', compact('services'));
     }
 
     /**

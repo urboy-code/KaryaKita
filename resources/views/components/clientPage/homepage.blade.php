@@ -1,6 +1,5 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div
-        class="flex flex-col items-center text-center md:text-start md:items-start justify-center space-y-10 h-full">
+    <div class="flex flex-col items-center text-center md:text-start md:items-start justify-center space-y-10 h-full">
         <h1 class="text-4xl font-extrabold text-primary md:text-5xl leading-tight">
             Cara baru untuk <br class="hidden sm:inline"> belajar & dapatkan ilmu
         </h1>
@@ -9,7 +8,7 @@
             seluruh
             Indonesia.</p>
         <div class="mt-8 flex space-x-4">
-            <a href="#"
+            <a href="{{ route('services.index') }}"
                 class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition ease-in-out duration-150">Mulai
                 Sekarang</a>
             <a href="#"
