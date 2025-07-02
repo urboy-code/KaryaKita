@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium">Semua Transaksi Saya</h3>
@@ -51,9 +51,9 @@
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$booking->status] ?? 'bg-gray-100 text-gray-800' }}">{{ ucfirst($booking->status) }}</span>
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="px-6 py-4 flex justify-center items-center">
                                             @if ($booking->status == 'accepted')
-                                                <a href="#"
+                                                <a href="{{ route('client.bookings.pay', $booking) }}"
                                                     class="inline-block bg-primary text-white font-bold py-1 px-3 rounded-full text-xs">
                                                     Bayar Sekarang</a>
                                             @endif

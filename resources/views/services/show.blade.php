@@ -1,11 +1,11 @@
 <x-guest-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{-- Kolom kiri: Detail Jasa --}}
             <div class="md:col-span-2 bg-white shadow-lg rounded-lg p-6">
-                @if ($service->image)
-                    <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}"
-                        class="w-full object-cover">
+                @if ($service->photo)
+                    <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->title }}"
+                        class="w-full object-cover rounded-md">
                 @else
                     <img src="https://placehold.co/600x400/png" alt="{{ $service->title }}"
                         class="w-full object-cover rounded-md">

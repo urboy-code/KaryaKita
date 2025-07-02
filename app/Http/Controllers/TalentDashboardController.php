@@ -22,6 +22,14 @@ class TalentDashboardController extends Controller
         return view('talent.bookings.index', compact('bookings'));
     }
 
+    public function servicesIndex()
+    {
+        $talent = Auth::user();
+        $services = $talent->service()->with('category')->latest()->get();
+
+        return view('services.index', compact('services'));
+    }
+
     public function accept(Booking $booking)
     {
         if (Auth::user()->id !== $booking->talent_id) {

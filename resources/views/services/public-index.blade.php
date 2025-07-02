@@ -1,22 +1,23 @@
 <x-guest-layout>
     <div class="">
-        <div class="max-w-7xl mx-auto py-32 px-6 lg:px-8">
-            <div class="text-center">
+        <div class="max-w-screen-lg mx-auto py-32 px-6 lg:px-8">
+            <div class="py-16 text-center">
                 <h1 class="text-4xl font-extrabold text-primary">Jelajahi Semua Jasa</h1>
                 <p class="mt-2 text-md font-light text-gray-600">Temukan talenta yang tepat untuk proyek Anda
                     berikutnya.</p>
             </div>
 
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="mt-32 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-secondary-dark">
                 @forelse ($services as $service)
                     <div
                         class="dark:bg-white bg-gray-800 overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-lg">
                         <a href="" class="block">
                             @if ($service->photo)
                                 <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->title }}"
-                                    class="w-full h-48 object-cover">
+                                    class="aspect-[16/9]">
                             @else
-                                <img src="https://placehold.co/600x400/png" alt="{{ $service->title }}">
+                                <img src="https://placehold.co/600x400/png" alt="{{ $service->title }}"
+                                    class="aspect-[16/9]">
                             @endif
                         </a>
                         <div class="p-6">

@@ -48,7 +48,7 @@ class ServiceController extends Controller
 
         $request->user()->service()->create($validated);
 
-        return redirect()->route('services.index')->with('success', 'Jasa berhasil dibuat.');
+        return redirect()->route('talent.services.index')->with('success', 'Jasa berhasil dibuat.');
     }
 
     /**

@@ -21,7 +21,8 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile/public', [ProfilePublicController::class, 'update'])->name('profile.public.update');
 
         // Service Routes
-        Route::resource('services', ServiceController::class)->except(['index','show']);
+        Route::resource('services', ServiceController::class)->except(['index', 'show']);
+        Route::get('/services', [TalentDashboardController::class, 'servicesIndex'])->name('services.index');
 
         // Route Dashboard Bookings Talent
         Route::get('/bookings', [TalentDashboardController::class, 'index'])->name('talent.bookings.index');
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:client')->prefix('client')->name('client.')->group(function () {
         // Route Bookings
         Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+        Route::get('/bookings/{booking}/pay', [BookingController::class, 'pay'])->name('bookings.pay');
 
         // Route Dashboard Bookings User
         Route::get('/bookings', [ClientDashboardController::class, 'index'])->name('bookings.index');

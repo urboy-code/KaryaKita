@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookingRequest;
+use App\Models\Booking;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -34,5 +36,47 @@ class BookingController extends Controller
         $booking->save();
 
         return redirect()->route('home')->with('success', 'Booking berhasil dibuat dan menunggu konfirmasi dari talent.');
+    }
+
+    public function pay(Booking $booking)
+    {
+        // cek pastikan yang bayar adalah client yang benar
+        if (Auth::user()->id !== $booking->client_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Configurasi midtrans
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = config('midtrans.is_production');
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        // set params
+        $params = [
+            'transaction_details' => [
+                'order_id' => 'KARYAKITA-' . $booking->id . '-' . time(),
+                'gross_amount' => $booking->service->price,
+            ],
+            'customer_details' => [
+                'first_name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+            ],
+            'item_details' => [
+                [
+                    'id' => $booking->service->id,
+                    'price' => $booking->service->price,
+                    'quantity' => 1,
+                    'name' => $booking->service->title,
+                ]
+            ],
+        ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return view('client.bookings.pay', compact('snapToken', 'booking'));
     }
 }

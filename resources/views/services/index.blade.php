@@ -7,7 +7,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="mx-auto">
-                    <a href="{{ route('services.create') }}"
+                    <a href="{{ route('talent.services.create') }}"
                         class="px-4 py-2 bg-gray-200 dark:bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white dark:text-blue-200 uppercase tracking-widest hover:bg-white dark:hover:bg-blue-700 focus:bg-white dark:focus:bg-blue-700 active:bg-blue-900 dark:active:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-blue-800 transition ease-in-out duration-150">{{ __('+ Tambah Jasa Baru') }}</a>
 
                     <div class="mt-6 ">
@@ -27,10 +27,10 @@
 
                                         <div
                                             class="mt-6 pt-4 border-t border-gray-700 dark:border-gray-300 flex justify-between items-center gap-3">
-                                            <a href="{{ route('services.edit', $service->id) }}"
+                                            <a href="{{ route('talent.services.edit', $service->id) }}"
                                                 class="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-gray-800 dark:text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ">{{ __('Edit') }}</a>
 
-                                            <form action="{{ route('services.destroy', $service->id) }}" method="POST">
+                                            <form action="{{ route('talent.services.destroy', $service->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 

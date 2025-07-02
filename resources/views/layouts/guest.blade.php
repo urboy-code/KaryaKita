@@ -18,7 +18,7 @@
 
 <body class="font-sans text-primary antialiased bg-secondary-light">
     <nav x-data="{ open: false }" class="bg-secondary-light border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 ">
             <div class="flex justify-between items-center h-16">
                 <div class="flex">
                     <div class="shrink-0 flex items-center">
@@ -138,7 +138,7 @@
 
     @isset($header)
         <header class="bg-secondary-light shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-screen-lg mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
         </header>
