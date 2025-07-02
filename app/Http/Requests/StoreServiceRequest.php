@@ -27,6 +27,7 @@ class StoreServiceRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric|min:10000',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

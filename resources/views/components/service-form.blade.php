@@ -31,3 +31,9 @@
     <x-text-input id="price" name="price" type="number" class="block mt-1 w-full" :value="old('price', $service?->price ?? '')" required />
     <x-input-error :messages="$errors->get('price')" class="mt-2" />
 </div>
+
+<div class="mt-4">
+    <x-input-label for="photo" :value="__('Foto Jasa')" />
+    <x-text-input id="photo" name="photo" type="file" class="block mt-1 w-full" :value="old('photo', $service?->photo ?? '')" />
+    <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+</div>

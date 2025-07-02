@@ -40,6 +40,11 @@ class ServiceController extends Controller
         // validate form input
         $validated = $request->validated();
 
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('service-photos', 'public');
+            $validated['photo'] = $path;
+        }
+
         $request->user()->service()->create($validated);
 
         return redirect()->route('services.index')->with('success', 'Jasa berhasil dibuat.');
@@ -81,6 +86,12 @@ class ServiceController extends Controller
         }
 
         $validated = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('service-photos', 'public');
+            $validated['photo'] = $path;
+        }
+
         $service->update($validated);
 
         return redirect()->route('services.index')->with('success', 'Jasa berhasil diperbarui.');

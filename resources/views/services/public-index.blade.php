@@ -11,9 +11,25 @@
                 @forelse ($services as $service)
                     <div
                         class="dark:bg-white bg-gray-800 overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-lg">
+                        <a href="" class="block">
+                            @if ($service->photo)
+                                <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->title }}"
+                                    class="w-full h-48 object-cover">
+                            @else
+                                <img src="https://placehold.co/600x400/png" alt="{{ $service->title }}">
+                            @endif
+                        </a>
                         <div class="p-6">
                             <p class="text-sm font-medium text-indigo-400 dark:text-indigo-600">
                                 {{ $service->category->name }}</p>
+                            <div class="flex items-center py-4">
+                                <img src="{{ asset('storage/' . $service->user->profile->profile_photo) }}"
+                                    alt="{{ $service->user->name }}"
+                                    class="h-10 w-10 object-cover rounded-full border border-primary shadow-md">
+                                <div class="ml-3">
+                                    <p class="font-bold text-gray-900">{{ $service->user->name }}</p>
+                                </div>
+                            </div>
                             <h3 class="mt-2 text-xl font-bold text-white dark:text-gray-900">
                                 {{ $service->title }}</h3>
                             <p class="mt-2 text-base text-gray-300 dark:text-gray-600 h-24 overflow-hidden">
@@ -21,10 +37,9 @@
                             <p class="mt-4 text-md font-extrabold text-white dark:text-gray-900">
                                 Rp {{ number_format($service->price, 0, ',', '.') }}</p>
 
-                            <div
-                                class="mt-6 pt-4 border-t border-gray-700 dark:border-gray-300 flex justify-between items-center gap-3">
+                            <div class="mt-6 pt-4 border-t border-gray-700 flex justify-center items-center gap-3">
                                 <a href="{{ route('services.show', $service) }}"
-                                    class="text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{{ __('Detail') }}</a>
+                                    class="w-1/2 text-center text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full">{{ __('Detail') }}</a>
                             </div>
                         </div>
                     </div>

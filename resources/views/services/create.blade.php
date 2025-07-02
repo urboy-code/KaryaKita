@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="">
-                    <form action="{{ route('services.store') }}" method="POST">
+                    <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <x-service-form :categories="$categories" />
