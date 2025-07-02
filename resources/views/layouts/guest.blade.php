@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.public-index')">
+                        <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
                             Jelajahi Jasa
                         </x-nav-link>
                     </div>
@@ -58,7 +58,7 @@
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('talent.profile.public.edit')">
+                                <x-dropdown-link :href="route('client.bookings.index')">
                                     {{ __('Dashboard') }}
                                 </x-dropdown-link>
 
@@ -122,6 +122,9 @@
                     <form method="POST" action="{{ route('logout') }}" class="px-4 mt-3">
                         @csrf
 
+                        <x-responsive-nav-link :href="route('client.bookings.index')" :active="request()->routeIs('client.bookings.index')">
+                            {{ __('Dashboard') }}
+                        </x-responsive-nav-link>
                         <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
@@ -130,11 +133,16 @@
                     </form>
                 @endauth
             </div>
-
         </div>
-
-
     </nav>
+
+    @isset($header)
+        <header class="bg-secondary-light shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+    @endisset
 
     <main>
         {{ $slot }}

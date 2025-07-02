@@ -28,6 +28,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (Auth::user()->role === 'talent') {
+            return redirect()->intended(route('talent.service.index', absolute: false));
+        }
+
         return redirect()->intended(route('home', absolute: false));
     }
 

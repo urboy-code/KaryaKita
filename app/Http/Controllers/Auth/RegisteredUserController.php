@@ -54,8 +54,10 @@ class RegisteredUserController extends Controller
                 'bio' => 'Selamat datang di KaryaKita!, silahkan lengkapi profil Anda agar client dapat mengenal Anda lebih baik.',
                 'city' => 'Belum diisi',
             ]);
+
+            return redirect()->route('talent.services.index');
         }
 
-        return redirect(route('service.index', absolute: false));
+        return redirect()->route('home');
     }
 }

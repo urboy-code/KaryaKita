@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ClientDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePublicController;
@@ -15,7 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Talent Routes
-    Route::middleware('role: talent')->prefix('talent')->name('talent.')->group(function () {
+    Route::middleware('role:talent')->prefix('talent')->name('talent.')->group(function () {
         Route::get('/profile/public', [ProfilePublicController::class, 'edit'])->name('profile.public.edit');
         Route::patch('/profile/public', [ProfilePublicController::class, 'update'])->name('profile.public.update');
 
@@ -23,20 +24,20 @@ Route::middleware('auth')->group(function () {
         Route::resource('services', ServiceController::class)->except(['index','show']);
 
         // Route Dashboard Bookings Talent
-        Route::get('/talent/bookings', [TalentDashboardController::class, 'index'])->name('talent.bookings.index');
+        Route::get('/bookings', [TalentDashboardController::class, 'index'])->name('talent.bookings.index');
 
         // Route Baru: Untuk mengubah status booking
-        Route::patch('/talent/bookings/{booking}/accept', [TalentDashboardController::class, 'accept'])->name('talent.bookings.accept');
-        Route::patch('/talent/bookings/{booking}/reject', [TalentDashboardController::class, 'reject'])->name('talent.bookings.reject');
+        Route::patch('/bookings/{booking}/accept', [TalentDashboardController::class, 'accept'])->name('talent.bookings.accept');
+        Route::patch('/bookings/{booking}/reject', [TalentDashboardController::class, 'reject'])->name('talent.bookings.reject');
     });
 
     // Client Routes
-    Route::middleware('role: client')->prefix('client')->name('client.')->group(function () {
+    Route::middleware('role:client')->prefix('client')->name('client.')->group(function () {
         // Route Bookings
         Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
         // Route Dashboard Bookings User
-        Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+        Route::get('/bookings', [ClientDashboardController::class, 'index'])->name('bookings.index');
     });
 });
 

@@ -54,13 +54,13 @@
                                     </td>
                                     <td class="px-6 py-4 text-right text-sm font-medium flex">
                                         @if ($booking->status == 'pending')
-                                            <form action="{{ route('talent.bookings.accept', $booking) }}"
+                                            <form action="{{ route('talent.talent.bookings.accept', $booking) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')
                                                 <button class="text-green-600 hover:text-green-900">Terima</button>
                                             </form>
-                                            <form action="{{ route('talent.bookings.reject', $booking) }}"
+                                            <form action="{{ route('talent.talent.bookings.reject', $booking) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')

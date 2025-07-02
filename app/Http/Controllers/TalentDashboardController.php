@@ -28,7 +28,7 @@ class TalentDashboardController extends Controller
             abort(403, 'Anda tidak memiliki izin untuk mengubah status booking ini.');
         }
         $booking->update(['status' => 'accepted']);
-        return redirect()->route('talent.bookings.index')->with('status', 'Booking berhasil diterima!');
+        return redirect()->route('talent.talent.bookings.index')->with('status', 'Booking berhasil diterima!');
     }
 
     public function reject(Booking $booking)
@@ -37,6 +37,6 @@ class TalentDashboardController extends Controller
             abort(403, 'Anda tidak memiliki izin untuk mengubah status booking ini.');
         }
         $booking->update(['status' => 'rejected']);
-        return redirect()->route('talent.bookings.index')->with('status', 'Booking telah ditolak!');
+        return redirect()->route('talent.talent.bookings.index')->with('status', 'Booking telah ditolak!');
     }
 }
