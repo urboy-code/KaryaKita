@@ -57,7 +57,7 @@
                                 <x-input-label for="notes" :value="__('Catatan Tambahan (Opsional)')" />
                                 <textarea name="notes" id="notes" rows="1"
                                     class="block mt-1 w-full rounded-md shadow-md  overflow-hidden focus:border-indigo-500">
-                                    {{ old('notes', '') }}
+                                    {{ old('notes') }}
                                 </textarea>
                             </div>
 

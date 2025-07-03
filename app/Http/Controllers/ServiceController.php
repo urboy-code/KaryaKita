@@ -85,7 +85,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreServiceRequest $request, Service $service)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         // 1. Otorisasi (jika pake Policy)
         if (Auth::user()->id !== $service->user_id) {

@@ -6,41 +6,41 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100 border-b border-gray-200">
+        <div class="max-w-screen-lg mx-auto sm:px-6 lg:px-8">
+            <div class="p-4 sm:p-8 bg-gradient-to-br from-primary-light to-secondary-light shadow sm:rounded-lg">
+                <div class="p-6 text-gray-100 border-b border-gray-100">
                     <h3 class="text-lg font-medium">{{ __('Daftar Pesanan Masuk') }}</h3>
 
                     <table class="min-w-full divide-y divide-gray-200 mt-6 rounded-md">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-950 uppercase tracking-wider">
                                     Jasa
                                 </th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-950 uppercase tracking-wider">
                                     Klien
                                 </th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-950 uppercase tracking-wider">
                                     Tgl Booking
                                 </th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-950 uppercase tracking-wider">
                                     Status
                                 </th>
-                                <th class="relative px-6 py-3 text-gray-900"><span class="sr-only">Aksi</span></th>
+                                <th class="relative px-bold text-slate-950"><span class="sr-only">Aksi</span></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             @forelse ($bookings as $booking)
                                 <tr>
-                                    <td class="px-6 py-4 text-gray-400">{{ $booking->service->title }}</td>
-                                    <td class="px-6 py-4 text-gray-400">{{ $booking->client->name }}</td>
-                                    <td class="px-6 py-4 text-gray-400">
+                                    <td class="px-6 py-4 text-gray-900">{{ $booking->service->title }}</td>
+                                    <td class="px-6 py-4 text-gray-900">{{ $booking->client->name }}</td>
+                                    <td class="px-6 py-4 text-gray-900">
                                         {{ \Carbon\Carbon::parse($booking->booking_date)->format('d M Y') }}</td>
-                                    <td class="px-6 py-4 text-gray-400">
+                                    <td class="px-6 py-4 text-gray-900">
                                         @php
                                             $statusClasses = [
                                                 'pending' => 'bg-yellow-100 text-yellow-800',
