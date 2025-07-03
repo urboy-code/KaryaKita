@@ -9,7 +9,7 @@
     <title>KaryaKita</title>
 </head>
 
-<body class="bg-secondary-light">
+<body class="bg-slate-100">
     <x-guest-layout>
         <div class="max-w-screen-lg mx-auto px-6 lg:px-8">
             <div class="min-h-screen flex justify-center items-center">

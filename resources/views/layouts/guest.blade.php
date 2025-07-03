@@ -16,8 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-primary antialiased bg-secondary-light">
-    <nav x-data="{ open: false }" class="bg-secondary-light border-b border-gray-100">
+<body class="font-sans text-primary antialiased bg-slate-100">
+    <nav x-data="{ open: false }" class="bg-slate-100 border-b border-secondary-light shadow-md">
         <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 ">
             <div class="flex justify-between items-center h-16">
                 <div class="flex">
