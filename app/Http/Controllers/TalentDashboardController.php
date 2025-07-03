@@ -26,6 +26,7 @@ class TalentDashboardController extends Controller
     {
         $talent = Auth::user();
         $services = $talent->service()->with('category')->latest()->get();
+        // dd($services);
 
         return view('services.index', compact('services'));
     }

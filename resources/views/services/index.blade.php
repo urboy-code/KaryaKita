@@ -36,10 +36,10 @@
 
                                         <div
                                             class="mt-6 pt-4 border-t border-gray-700 dark:border-gray-200 flex justify-between items-center gap-3">
-                                            <a href="{{ route('talent.services.edit', $service->id) }}"
+                                            <a href="{{ route('talent.services.edit', $service) }}"
                                                 class="inline-flex items-center px-6 py-3 bg-gray-200 dark:bg-primary border border-transparent rounded-md font-semibold text-xs text-gray-800 dark:text-white uppercase tracking-widest hover:bg-primary-light active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ">{{ __('Edit') }}</a>
 
-                                            <form action="{{ route('talent.services.destroy', $service->id) }}"
+                                            <form action="{{ route('talent.services.destroy', $service) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreServiceRequest extends FormRequest
+class UpdateServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,13 +21,13 @@ class StoreServiceRequest extends FormRequest
      */
     public function rules(): array
     {
+        $serviceId = $this->service->id;
         return [
-            //
-            'title' => 'required|string|max:225',
+            'title' => 'required|string|max:225' . $serviceId,
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string|max:4000',
             'price' => 'required|numeric|min:10000',
-            'photo' => 'nullable',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

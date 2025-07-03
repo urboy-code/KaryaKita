@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -15,9 +17,11 @@ class ServiceController extends Controller
      */
     public function index()
     {
+
         // mengambil semua jasa milik user, urutkan dari yang terbaru
         $user = Auth::user();
         $services = Service::with(['user.profile', 'category'])->latest()->get();
+
 
         return view('services.public-index', compact('services'));
     }
@@ -42,7 +46,7 @@ class ServiceController extends Controller
         $validated = $request->validated();
 
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('service-photos', 'public');
+            $path = $request->file('photo')->store('service_photos', 'public');
             $validated['photo'] = $path;
         }
 
@@ -56,7 +60,9 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
+
         $service->load('user.profile', 'category');
+
 
         return view('services.show', compact('service'));
     }
@@ -81,21 +87,34 @@ class ServiceController extends Controller
      */
     public function update(StoreServiceRequest $request, Service $service)
     {
-        //
+        // 1. Otorisasi (jika pake Policy)
         if (Auth::user()->id !== $service->user_id) {
             abort(403, 'Unauthorized action.');
         }
 
+        // 2. Ambil semua data yang sudah lolos validasi
         $validated = $request->validated();
+        // dd('langkah1', $validated);
 
+        // 3. Update photo jika ada
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('service-photos', 'public');
+            // Hapus foto lama jika ada (opsional)
+            if ($service->photo) {
+                Storage::disk('public')->delete($service->photo);
+            }
+
+            // Simpen filenya DAN TANGKAP alamat barunya ke variabel $path
+            $path = $request->file('photo')->store('service_photos', 'public');
+            // dd('langkah 3', $path);
+
+            // Gunain variabel $path itu untuk di-update ke database
             $validated['photo'] = $path;
         }
 
+        // 4. Update service dengan semua data yang sudah disiapkan
         $service->update($validated);
 
-        return redirect()->route('services.index')->with('success', 'Jasa berhasil diperbarui.');
+        return redirect()->route('talent.services.index')->with('status', 'Jasa berhasil diperbarui!');
     }
 
     /**
