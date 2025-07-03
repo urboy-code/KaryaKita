@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ClientDashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePublicController;
@@ -17,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Talent Routes
     Route::middleware('role:talent')->prefix('talent')->name('talent.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/profile/public', [ProfilePublicController::class, 'edit'])->name('profile.public.edit');
         Route::patch('/profile/public', [ProfilePublicController::class, 'update'])->name('profile.public.update');
 

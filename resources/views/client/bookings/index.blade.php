@@ -51,7 +51,7 @@
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$booking->status] ?? 'bg-gray-100 text-gray-800' }}">{{ ucfirst($booking->status) }}</span>
                                         </td>
-                                        <td class="px-6 py-4 flex justify-center items-center">
+                                        <td class="px-6 py-4 flex justify-center items-center text-center">
                                             @if ($booking->status == 'accepted')
                                                 <a href="{{ route('client.bookings.pay', $booking) }}"
                                                     class="inline-block bg-primary text-white font-bold py-1 px-3 rounded-full text-xs">

@@ -110,6 +110,6 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('services.index')->with('success', 'Jasa berhasil dihapus.');
+        return redirect()->route('talent.services.index')->with('success', 'Jasa berhasil dihapus.');
     }
 }

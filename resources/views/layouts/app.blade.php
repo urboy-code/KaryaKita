@@ -17,12 +17,12 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-slate-50">
+    <div class="min-h-screen bg-white">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
         @isset($header)
-            <header class="bg-white dark:bg-gray-800 shadow">
+            <header class="bg-white shadow-md text-primary">
                 <div class="max-w-screen-lg mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>

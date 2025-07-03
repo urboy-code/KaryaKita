@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
                 'city' => 'Belum diisi',
             ]);
 
-            return redirect()->route('talent.services.index');
+            return redirect()->route('talent.dashboard');
         }
 
         return redirect()->route('home');

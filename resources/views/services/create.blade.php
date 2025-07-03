@@ -6,7 +6,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-gradient-to-tr from-secondary-light to-primary-light shadow sm:rounded-lg">
                 <div class="">
                     <form action="{{ route('talent.services.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
