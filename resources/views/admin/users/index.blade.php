@@ -32,11 +32,13 @@
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                         Tgl. Daftar
                                     </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-900"><span
+                                            class="sr-only">Aksi</span></th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 text-gray-900">
                                 @forelse ($users as $user)
-                                    <tr>
+                                    <tr class="@if ($user->status == 'blocked') bg-red-900 @endif">
                                         <td class="px-6 py-4">{{ $user->name }}</td>
                                         <td class="px-6 py-4">{{ $user->email }}</td>
                                         <td class="px-6 py-4">
@@ -50,6 +52,18 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ \Carbon\Carbon::parse($user->created_at)->format('d M Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <form action="{{ route('admin.users.toggle_status', $user) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit"
+                                                    class="font font-medium 
+                                                    @if ($user->status == 'active') text-red-600 hover:text-red-900 
+                                                    @else text-green-600 hover:text-green-900 @endif                                    ">
+                                                    {{ $user->status == 'active' ? 'Block' : 'Unblock' }}</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @empty
