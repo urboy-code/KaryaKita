@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ClientDashboardController;
 use App\Http\Controllers\DashboardController;
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
     });
 });
 
