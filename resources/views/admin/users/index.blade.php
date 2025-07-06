@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
             {{ __('Kelola Pengguna') }}
@@ -38,7 +38,7 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 text-gray-900">
                                 @forelse ($users as $user)
-                                    <tr class="@if ($user->status == 'blocked') bg-red-900 @endif">
+                                    <tr class="@if ($user->status == 'blocked') bg-red-700 text-white @endif">
                                         <td class="px-6 py-4">{{ $user->name }}</td>
                                         <td class="px-6 py-4">{{ $user->email }}</td>
                                         <td class="px-6 py-4">
@@ -80,4 +80,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>
