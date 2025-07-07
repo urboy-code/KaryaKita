@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
@@ -88,9 +89,7 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, Service $service)
     {
         // 1. Otorisasi (jika pake Policy)
-        if (Auth::user()->id !== $service->user_id) {
-            abort(403, 'Unauthorized action.');
-        }
+        Gate::authorize('update', $service);
 
         // 2. Ambil semua data yang sudah lolos validasi
         $validated = $request->validated();
@@ -123,9 +122,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
-        if (Auth::user()->id !== $service->user_id) {
-            abort(403, 'Unauthorized action.');
-        }
+        Gate::authorize('delete', $service);
 
         $service->delete();
 
